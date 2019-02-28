@@ -21,5 +21,17 @@
         root._ = _;
     }
 
+    _.each = _.forEach = function (arr, iteratee, context) {
+        if (typeof arr[length] === 'number') {
+            for (let i = 0, length = arr.length; i < length; i++) {
+                iteratee(arr[i], i, arr);
+            }
+        } else {
+            for (let key in arr) {
+                iteratee(arr[key], key, arr);
+            }
+        }
+
+    }
 
 })();
