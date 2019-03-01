@@ -10,5 +10,5 @@ _.forEach(myArr, cb);
 ```
 
 ## Table Of Content
-* each
-* map
+* each/forEach
+* map/collect
