@@ -32,6 +32,20 @@
             }
         }
 
+    };
+
+    _.map = _.collect = function (list, iteratee, context) {
+        const myArray = [];
+        if (typeof list['length'] === 'number') {
+            for (let i = 0, length = list.length; i <length; i++) {
+                myArray.push(iteratee(list[i], i));
+            }
+        } else {
+            for (let i in list) {
+                myArray.push(iteratee(list[i],i));
+            }
+        }
+        return myArray;
     }
 
 })();
