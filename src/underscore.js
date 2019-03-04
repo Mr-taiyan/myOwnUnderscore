@@ -46,6 +46,29 @@
             }
         }
         return myArray;
-    }
+    };
+
+    _.reduce = _.inject = _.foldl = function (list, iteratee, memo, context) {
+
+        if (memo) {
+            for (let [k, v] of list.entries()) {
+                memo = iteratee(memo, v, k, list);
+            }
+
+            return memo;
+        } else {
+            let memo;
+            for (let [k, v] of list.entries()) {
+                if (k === 0) {
+                    memo = v;
+                } else {
+                    memo = iteratee(memo, v, k, list);
+                }
+            }
+
+            return memo;
+        }
+
+    };
 
 })();
