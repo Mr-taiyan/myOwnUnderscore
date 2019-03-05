@@ -14,4 +14,36 @@
         root._ = _;
     }
 
+    var optimizeCb = function (func, context, argCount) {
+        if (context === void 0) {
+            return func;
+        }
+        switch (argCount === null ? 3 : argCount) {
+            case 1: return function(value) {
+                return func.call(context, value);
+            };
+            case 3: return function (value, index, collection) {
+                return func.call(context, value, index, collection);
+            };
+            case 4: return function (accumulator, value, index, collection) {
+                return func.call(context, accumulator, value, index, collection);
+            }
+        }
+        return function () {
+            return func.apply(context, arguments);
+        };
+    };
+
+    var shallowProperty = function (key) {
+        return function (obj) {
+            return obj === null ? void 0 : obj[key];
+        }
+    };
+    var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
+    var getLength = shallowProperty('length');
+    var isArrayLike = function (collection) {
+        var length = getLength(collection);
+        return typeof length === 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
+    };
+
 })();
