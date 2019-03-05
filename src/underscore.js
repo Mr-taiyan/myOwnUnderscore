@@ -71,4 +71,9 @@
 
     };
 
+    _.reduceRight = _.foldr = function (list, iteratee, memo, context) {
+        list = list.reverse();
+        return _.reduce(list, iteratee, memo, context);
+    }
+
 })();
