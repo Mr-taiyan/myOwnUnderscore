@@ -71,7 +71,7 @@
         return _.reduce(list, iteratee, memo, context);
     };
 
-    _.find = _.detect = function (list, predicate, [context]) {
+    _.find = _.detect = function (list, predicate, context) {
         let num;
 
         for (let [k, v] of list.entries()) {
