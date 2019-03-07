@@ -46,4 +46,6 @@
         return typeof length === 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
     };
 
+
+
 })();
