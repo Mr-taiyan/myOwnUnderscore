@@ -46,4 +46,11 @@
         return typeof length === 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
     };
 
+    var nodelist = root.document && root.document.childNodes;
+    if(typeof /./ != 'function' && typeof Int8Array != 'object' && typeof nodelist != 'function') {
+        _.isFunction = function (obj) {
+            return typeof obj == 'function' || false;
+        }
+    }
+
 })();
